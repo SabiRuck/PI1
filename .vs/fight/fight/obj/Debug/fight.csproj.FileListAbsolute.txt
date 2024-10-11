@@ -1,0 +1,6 @@
+C:\Users\ruckovas23\source\repos\fight\fight\obj\Debug\fight.csproj.CoreCompileInputs.cache
+C:\Users\ruckovas23\source\repos\fight\fight\bin\Debug\fight.exe.config
+C:\Users\ruckovas23\source\repos\fight\fight\bin\Debug\fight.exe
+C:\Users\ruckovas23\source\repos\fight\fight\bin\Debug\fight.pdb
+C:\Users\ruckovas23\source\repos\fight\fight\obj\Debug\fight.exe
+C:\Users\ruckovas23\source\repos\fight\fight\obj\Debug\fight.pdb
