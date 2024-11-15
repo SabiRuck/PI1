@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            /*
+            while (true)
+            {
+                Console.Write("Zadaj meno: ");
+                meno = Console.ReadLine();
+
+                while (true)
+                {
+                    line = subor.ReadLine();
+                    if (line == null)
+                    {
+                        break;
+                    }
+
+                    if (line.Contains(meno))
+                    {
+                        List<String> menoSkore = new List<String>(line.Split("\t".ToCharArray()));
+                        Console.Write("{0} ma skore {1}\n", meno, menoSkore[0]);
+                        return;
+                    }
+                    
+                }
+                Console.WriteLine("Meno sa nenachadza v subore.");*/
+            StreamReader subor = new StreamReader("C:\\Users\\ruckovas23\\source\\repos\\skore.txt");
+            string meno, line;
+
+            List<string> mena = new List<string>();
+            List<int> skore = new List<int>();
+            string[] menoSkore;
+
+            while(true)
+            {
+                line = subor.ReadLine();
+                if (line == null)
+                    break;
+                menoSkore = line.Split('\t');
+                mena.Add(menoSkore[0]);
+                skore.Add(Convert.ToInt32(menoSkore[1]));
+            }
+            Console.Write("Zadaj meno: ");
+            meno = Console.ReadLine();
+
+            int index;
+            if (mena.Contains(meno))
+                index = mena.IndexOf(meno);
+
+            else
+            {
+                mena.Add(meno);
+                skore.Add(0);
+                index = mena.Count;
+            }
+
+            Random r = new Random();
+            int odhad; 
+
+
+            int theInt = r.Next(0,99);
+            int mskore = 0;
+            while(true)
+            {
+                Console.Write("Zadaj svoj odhad: ");
+                odhad = Convert.ToInt32(Console.ReadLine());
+                mskore++;
+                if (odhad == theInt)
+                {
+                    Console.Write("Super uhodol si s poctom pokusov{1}! Cislo bolo {0}", theInt, skore);
+                    break;
+                }
+                else if(odhad>theInt)
+                    Console.WriteLine("Zadal si vacsie cislo.");   
+                else
+                    Console.WriteLine("Zadal si mensie cislo.");
+            }
+            
+
+
+
+
+            }
+            
+
+        }
+    }
+}
