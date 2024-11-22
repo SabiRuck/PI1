@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random r = new Random();
+
+            Console.Write("Utocnik zvol pocet panacikou (1,2,3): ");
+            int pocetU = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Obranca zvol pocet panacikou (1,2): ");
+            int pocetO = Convert.ToInt32(Console.ReadLine());
+
+            int[] utocnik = new int[pocetU+1];
+            int[] obranca = new int[pocetO+1];
+            int uWin = 0;
+            int oWin = 0;
+
+            for (int i = 0; i <= pocetU-1; i++)
+                utocnik[i] = r.Next(1, 7);
+            for (int i = 0; i <= pocetO-1; i++)
+                obranca[i] = r.Next(1, 7);
+
+            Console.WriteLine("utocnik hodin: {0}.", string.Join(",", utocnik).Remove(pocetU*pocetU));
+            Console.WriteLine("obranca hodin: {0}.\n", string.Join(",", obranca).Remove(pocetO*pocetO));
+            
+            if(pocetO == 1)
+            {
+                obranca[1] = obranca[0];
+            }
+            if(pocetU == 1)
+            {
+                utocnik[1] = utocnik[0];
+            }
+            Array.Sort(utocnik);
+            Array.Reverse(utocnik);
+            Array.Sort(obranca);
+            Array.Reverse(obranca);
+
+            //if (pocetO > 1 && pocetU > 1)
+                
+            
+                if (utocnik[1] <= obranca[0])
+                    oWin++;
+                else
+                    uWin++;
+                if (utocnik[0] <= obranca[1])
+                    oWin++;
+                else
+                    uWin++;
+
+            Console.WriteLine("utocnik vyhral {0}krat", uWin);
+            Console.WriteLine("obranca vyhral {0}krat", oWin);
+
+
+        }
+    }
+}
