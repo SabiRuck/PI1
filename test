@@ -1,0 +1,111 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+namespace test
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StreamReader fileR = new StreamReader("C:\\Users\\ruckovas23\\source\\repos\\d1.txt");
+            List<List<string>> file = new List<List<string>>();
+            List<string> fileLine = new List<string>();
+            List<string> add = new List<string>();
+            string line, task, delete;
+
+            while((line = fileR.ReadLine()) != null)
+            {
+                string[] part = line.Split(';');
+                for(int i =0; i< 3; i++)
+                {
+                    fileLine.Add(part[i]);
+                }
+                file.Add(fileLine);
+                fileLine = new List<string>();
+            }
+            fileR.Close();
+
+            while(true)
+            { 
+                Console.Write("zobraz/pridaj/vymaz/koniec: ");
+                task = Console.ReadLine();
+                Console.WriteLine();
+
+                if (task == "zobraz")
+                {
+                    for (int i = 0; i < file.Count(); i++)
+                    {
+                        for (int j = 0; j < 3; j++)
+                            Console.Write(file[i][j] + ' ');
+
+                        Console.WriteLine();
+                    }
+                    Console.WriteLine();
+                }
+
+                else if (task == "pridaj")
+                {
+
+                    Console.Write("Meno ziaka: ");
+                    add.Add(Console.ReadLine());
+                    Console.Write("Trieda ziak: ");
+                    add.Add(Console.ReadLine());
+                    Console.Write("Konzultant ziaka: ");
+                    add.Add(Console.ReadLine());
+
+                    file.Add(add);
+                    add = new List<string>();
+                    Console.WriteLine();
+                }
+
+                else if (task == "vymaz")
+                {
+                    Console.Write("ziak/trieda/konzultant: ");
+                    delete = Console.ReadLine();
+                    int a;
+
+                    switch (delete)
+                    {
+                        case "ziak":
+                            a = 0;
+                            break;
+                        case "trieda":
+                            a = 1;
+                            break;
+                        case "konzultant":
+                            a = 2;
+                            break;
+                        default:
+                            Console.WriteLine("Error");
+                            a = 3;
+                            break;
+                    }
+                    if (a == 3)
+                        continue;
+
+                    Console.Write("Udaj na vymazanie: ");
+                    delete = Console.ReadLine();
+
+                    for (int i = 0; i < file.Count(); i++)
+                    {
+                        if (file[i][a] == delete)
+                        {
+                            file.RemoveAt(i);
+                            i--;
+                        }
+                    }
+                    Console.WriteLine();
+                }
+
+                else if(task == "koniec")
+                {
+                    Console.WriteLine("Koniec! Prajem pekny den!");
+                    return;
+                }
+            }
+        }
+    }
+}
