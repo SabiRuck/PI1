@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+   
+    class Ziak
+    {
+        public string meno;
+        public int vek;
+        
+
+        public Ziak(string meno, int vek)
+        {
+            this.meno = meno;
+            this.vek = vek;
+        }
+
+        public string getMeno()
+        {
+            return this.meno;
+        }
+        public int getVek()
+        {
+            return this.vek;
+        }
+
+        public znamky Prospech
+        {
+            get;
+            set;
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Ziak ziak1 = new Ziak("Petra Skolova", 17);
+            Ziak ziak2 = new Ziak("Sabina Ruckova", 16);
+
+            ziak1.Prospech = znamky.vyborny;
+            ziak2.Prospech = znamky.vyborny;
+
+            Console.Write($"Ziak {ziak1.meno} s vekom {ziak1.vek} ma prospech {ziak1.Prospech}.\n");
+            Console.Write($"Ziak {ziak2.meno} s vekom {ziak2.vek} ma prospech {ziak2.Prospech}.\n");
+
+
+        }
+    }
+}
