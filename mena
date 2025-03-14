@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace idkRandommeno
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        public string[] mena = new string[5] { "Mato", "Matus", "Petra", "Sabi", "Alex" };
+        public int[] znamky = new int[5] { 3, 2, 1, 1, 2 };
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string meno = textBox1.Text;
+            if(mena.Contains(meno))
+            {
+                int miest = Array.IndexOf(mena, meno);
+                MessageBox.Show($"{meno} dostal/a {znamky[miest]}", "Vysledok ziaka", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Meno sa nenachadza v systeme!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+
+        }
+    }
+}
